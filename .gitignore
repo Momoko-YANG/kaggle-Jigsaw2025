@@ -38,8 +38,8 @@ ENV/
 .ipynb_checkpoints
 *.ipynb
 
-# Model files
-models/
+# Model files (trained models, not source code)
+/models/
 *.pth
 *.pt
 *.bin
