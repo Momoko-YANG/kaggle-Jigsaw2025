@@ -19,7 +19,7 @@ class TrainingConfig:
     subsample_fraction: float
 
 @dataclass
-class Dataconfig:
+class DataConfig:
     test_data_path: str
     output_dir: str
 
@@ -35,5 +35,5 @@ class Config:
 
         self.model = ModelConfig(**config_dict["model"])
         self.training = TrainingConfig(**config_dict["training"])
-        self.data = Dataconfig(**config_dict["data"])
+        self.data = DataConfig(**config_dict["data"])
         self.inference = InferenceConfig(**config_dict["inference"])
