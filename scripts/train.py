@@ -5,9 +5,11 @@ sys.path.append('.')
 from src.config.model_config import Config
 from src.data.loader import DataLoader
 from src.data.preprocessor import TextPreprocessor
+from src.data.triplet_dataset import TripletDatasetCreator
 from src.models.embedding_model import EmbeddingModel
 from src.models.trainer import ModelTrainer
 from src.utils.logging_utils import setup_logging
+
 
 def main():
     setup_logging()
@@ -26,7 +28,8 @@ def main():
     model = model_wrapper.load_model()
     
     # Create training dataset
-    # ... (triplet creation logic)
+    triplet_creator = TripletDatasetCreator(config.training)
+    train_dataset = triplet_creator.create_triplet_dataset(df)
     
     # Train
     trainer = ModelTrainer(model, config.training)
