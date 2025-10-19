@@ -4,6 +4,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 class DataLoader:
     """Load and validate data."""
 
@@ -18,15 +19,19 @@ class DataLoader:
     @staticmethod
     def validate_data(df: pd.DataFrame) -> bool:
         """Validate data."""
-        required_cols = ['row_id', 'body', 'rule', 
-                        'positive_example_1', 'positive_example_2', 
-                        'negative_example_1', 'negative_example_2']
-        
+        required_cols = [
+            "row_id",
+            "body",
+            "rule",
+            "positive_example_1",
+            "positive_example_2",
+            "negative_example_1",
+            "negative_example_2",
+        ]
+
         missing_cols = set(required_cols) - set(df.columns)
         if missing_cols:
             logger.error(f"Missing required columns: {missing_cols}")
             return False
-        
-        return True
 
-   
+        return True

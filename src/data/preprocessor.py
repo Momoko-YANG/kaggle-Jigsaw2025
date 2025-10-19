@@ -3,6 +3,7 @@ from urllib.parse import urlparse
 from typing import Optional, Set, List
 import pandas as pd
 
+
 class TextPreprocessor:
     """Preprocess text data."""
 
@@ -19,17 +20,18 @@ class TextPreprocessor:
             try:
                 parsed = urlparse(url)
                 domain = parsed.netloc.lower()
-                if domain.startswith('www.'):
+                if domain.startswith("www."):
                     domain = domain[4:]
-                
-                path_parts = [p for p in parsed.path.split('/') if p]
+
+                path_parts = [p for p in parsed.path.split("/") if p]
                 if path_parts:
-                    important_path = '/'.join(path_parts[:2])
+                    important_path = "/".join(path_parts[:2])
                     return f"<url>: ({domain}/{important_path})"
                 else:
                     return f"<url>: ({domain})"
             except:
                 return "<url>: (unknown)"
+
         return re.sub(url_pattern, replace_url, str(text))
 
     @staticmethod
@@ -38,13 +40,12 @@ class TextPreprocessor:
         all_texts = set()
 
         # Add bodies
-        for body in df['body']:
+        for body in df["body"]:
             if pd.notna(body):
                 all_texts.add(TextPreprocessor.clean_text(body))
 
         # Add positive and negative examples
-        example_cols = ['positive_example_1', 'positive_example_2', 
-                        'negative_example_1', 'negative_example_2']
+        example_cols = ["positive_example_1", "positive_example_2", "negative_example_1", "negative_example_2"]
         for col in example_cols:
             for example in df[col]:
                 if pd.notna(example):
