@@ -1,7 +1,7 @@
 # kaggle-Jigsaw2025
-# Rule Violation Detection System
 
 A machine learning system for detecting rule violations in text using fine-tuned sentence transformers and centroid-based classification.
+This project is adapted from the Kaggle competition Jigsaw 2025, with the primary purpose of transforming a competition notebook into a production-ready MLE project. The goal is to gain hands-on experience with end-to-end engineering workflows — including model training, inference service deployment, and CI/CD integration.
 
 ## 📋 Project Overview
 
@@ -40,7 +40,7 @@ rule-violation-detection/
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/kaggle-Jigsaw2025.git
+git clone https://github.com/Momoko-YANG/kaggle-Jigsaw2025.git
 cd kaggle-Jigsaw2025
 
 # Create virtual environment
@@ -303,27 +303,6 @@ View logs in real-time:
 tail -f logs/rule_violation_*.log
 ```
 
-## 🔐 Environment Variables
-
-Create `.env` file for sensitive data:
-```bash
-# .env
-KAGGLE_USERNAME=your_username
-KAGGLE_KEY=your_api_key
-MODEL_CACHE_DIR=/path/to/cache
-```
-
-## 📝 Citation
-
-If you use this code, please cite:
-```bibtex
-@software{rule_violation_detection,
-  title={Rule Violation Detection System},
-  author={Your Name},
-  year={2025},
-  url={https://github.com/yourusername/kaggle-Jigsaw2025}
-}
-```
 
 
 ## 🤝 Contributing
