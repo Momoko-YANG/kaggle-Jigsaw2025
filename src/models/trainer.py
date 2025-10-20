@@ -1,7 +1,8 @@
+import logging
+
 from datasets import Dataset
 from sentence_transformers import SentenceTransformerTrainer, SentenceTransformerTrainingArguments
 from sentence_transformers.losses import TripletLoss
-import logging
 
 logger = logging.getLogger(__name__)
 

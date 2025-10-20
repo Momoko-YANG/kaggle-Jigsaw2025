@@ -2,8 +2,9 @@
 Tests for text preprocessing functionality.
 """
 
-import pytest
 import pandas as pd
+import pytest
+
 from src.data.preprocessor import TextPreprocessor
 
 

@@ -2,11 +2,12 @@
 Tests for prediction functionality.
 """
 
-import pytest
 import numpy as np
 import pandas as pd
-from src.inference.predictor import ViolationPredictor
+import pytest
+
 from src.data.preprocessor import TextPreprocessor
+from src.inference.predictor import ViolationPredictor
 
 
 @pytest.fixture
