@@ -3,6 +3,7 @@ import logging
 from datasets import Dataset
 from sentence_transformers import SentenceTransformerTrainer, SentenceTransformerTrainingArguments
 from sentence_transformers.losses import TripletLoss
+import torch
 
 logger = logging.getLogger(__name__)
 
@@ -33,7 +34,7 @@ class ModelTrainer:
             logging_steps=max(1, max_steps // 4),
             save_strategy="epoch",
             save_total_limit=1,
-            fp16=True,
+            fp16=torch.cuda.is_available(),
             max_grad_norm=self.config.max_grad_norm,
             gradient_accumulation_steps=self.config.gradient_accumulation_steps,
             gradient_checkpointing=True,
@@ -47,7 +48,7 @@ class ModelTrainer:
         trainer.train()
 
         final_path = f"{output_dir}/final"
-        self.model.save_pretrained(final_path)
+        self.model.save(final_path)
         logger.info(f"Training completed. Model saved to {final_path}")
 
         return self.model

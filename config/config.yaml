@@ -10,7 +10,7 @@ training:
   epochs: 1
   batch_size: 32
   learning_rate: 2.0e-5
-  margin: 0.25
+  triplet_margin: 0.25
   augmentation_factor: 2
   subsample_fraction: 1.0
   gradient_accumulation_steps: 1

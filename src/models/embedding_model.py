@@ -26,7 +26,11 @@ class EmbeddingModel:
             self.model = SentenceTransformer(modules=[word_embedding, pooling])
 
             if self.use_fp16:
-                self.model.half()
+                if torch.cuda.is_available():
+                    self.model = self.model.to(torch.device("cuda"))
+                    self.model.half()
+                else:
+                    logger.warning("FP16 requested but CUDA is not available; using FP32 instead.")
 
             logger.info(f"Loaded model from {self.model_path}")
             return self.model
@@ -55,5 +59,5 @@ class EmbeddingModel:
             raise ValueError("No model to save")
 
         os.makedirs(output_path, exist_ok=True)
-        self.model.save_pretrained(output_path)
+        self.model.save(output_path)
         logger.info(f"Model saved to {output_path}")

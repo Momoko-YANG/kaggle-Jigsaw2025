@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from typing import Optional
 import yaml
 
 @dataclass
@@ -14,9 +13,11 @@ class TrainingConfig:
     epochs: int
     batch_size: int
     learning_rate: float
-    triplet_margin: float   
+    triplet_margin: float
     augmentation_factor: int
     subsample_fraction: float
+    gradient_accumulation_steps: int = 1
+    max_grad_norm: float = 1.0
 
 @dataclass
 class DataConfig:

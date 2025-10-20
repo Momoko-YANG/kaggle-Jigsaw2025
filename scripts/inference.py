@@ -6,6 +6,7 @@ from src.config.model_config import Config
 from src.data.loader import DataLoader
 from src.data.preprocessor import TextPreprocessor
 from src.models.embedding_model import EmbeddingModel
+from src.features.embeddings import EmbeddingGenerator
 from src.features.centroids import CentroidBuilder
 from src.inference.predictor import ViolationPredictor
 from src.utils.logging_utils import setup_logging
@@ -24,18 +25,17 @@ def main():
         model_path=f"{config.data.output_dir}/final",
         max_seq_length=config.model.max_seq_length
     )
-    model = model_wrapper.load_model()
+    model_wrapper.load_model()
     
     # Generate embeddings
     preprocessor = TextPreprocessor()
-    texts = preprocessor.collect_unique_texts(df)
-    embeddings = model_wrapper.encode(texts, config.inference.batch_size)
-    text_to_embedding = dict(zip(texts, embeddings))
+    embedding_generator = EmbeddingGenerator(model_wrapper, batch_size=config.inference.batch_size)
+    text_to_embedding, rule_embeddings = embedding_generator.build_dataframe_embeddings(df, preprocessor)
     
     # Build centroids
     centroid_builder = CentroidBuilder()
     rule_centroids = centroid_builder.build_rule_centroids(
-        df, text_to_embedding, {}, preprocessor
+        df, text_to_embedding, rule_embeddings, preprocessor
     )
     
     # Predict
