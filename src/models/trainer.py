@@ -1,9 +1,9 @@
 import logging
 
+import torch
 from datasets import Dataset
 from sentence_transformers import SentenceTransformerTrainer, SentenceTransformerTrainingArguments
 from sentence_transformers.losses import TripletLoss
-import torch
 
 logger = logging.getLogger(__name__)
 

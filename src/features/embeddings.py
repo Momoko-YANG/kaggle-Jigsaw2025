@@ -5,7 +5,7 @@ Embedding utilities for text and rule features.
 from __future__ import annotations
 
 import logging
-from typing import Dict, Iterable, List, Optional, Sequence, Tuple, TYPE_CHECKING
+from typing import TYPE_CHECKING, Dict, Iterable, List, Optional, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
