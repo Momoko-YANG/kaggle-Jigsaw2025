@@ -2,10 +2,12 @@
 Tests for data loading functionality.
 """
 
-import pytest
-import pandas as pd
-import tempfile
 import os
+import tempfile
+
+import pandas as pd
+import pytest
+
 from src.data.loader import DataLoader
 
 

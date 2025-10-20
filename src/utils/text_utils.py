@@ -3,9 +3,9 @@ Text processing utilities.
 """
 
 import re
-from urllib.parse import urlparse
-from typing import Optional, List, Dict
 import unicodedata
+from typing import Dict, List, Optional
+from urllib.parse import urlparse
 
 
 def clean_url(url: str) -> str:

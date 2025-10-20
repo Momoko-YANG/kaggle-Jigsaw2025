@@ -4,8 +4,8 @@ Logging utilities for the project.
 
 import logging
 import sys
-from pathlib import Path
 from datetime import datetime
+from pathlib import Path
 from typing import Optional
 
 
