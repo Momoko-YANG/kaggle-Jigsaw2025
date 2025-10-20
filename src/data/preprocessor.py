@@ -1,6 +1,7 @@
 import re
+from typing import List, Optional, Set
 from urllib.parse import urlparse
-from typing import Optional, Set, List
+
 import pandas as pd
 
 

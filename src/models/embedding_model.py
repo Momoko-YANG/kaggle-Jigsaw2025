@@ -1,9 +1,10 @@
+import logging
 import os
+from typing import List, Optional
+
+import numpy as np
 import torch
 from sentence_transformers import SentenceTransformer, models
-from typing import List, Optional
-import numpy as np
-import logging
 
 logger = logging.getLogger(__name__)
 
